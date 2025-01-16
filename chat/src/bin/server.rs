@@ -22,6 +22,7 @@ async fn handle_connection(
 
     loop {
         tokio::select! {
+            // futures_util::stream::StreamExt::next() for async reading msgs from ws stream
             incoming = ws_stream.next() => {
                 match incoming {
                     Some(Ok(msg)) => {
@@ -33,6 +34,10 @@ async fn handle_connection(
                     Some(Err(err)) => return Err(err.into()),
                     None => return Ok(()),
                 }
+            }
+            msg = bcast_rx.recv() => {
+                // futures_util::sink::SinkExt::send for async send msgs on ws stream
+                ws_stream.send(Message::text(msg?)).await?;
             }
         }
     }
