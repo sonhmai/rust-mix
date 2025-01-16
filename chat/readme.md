@@ -9,6 +9,9 @@ cargo run --bin client
 ```
 
 todos
-- [ ] handle_connection function in server  with `tokio::select!`
-- [ ] main function in client with `tokio::select!`
+- [x] handle_connection function in server  with `tokio::select!`
+- [x] main function in client with `tokio::select!`
 - [ ] not broadcast message to client sending it
+
+refs
+- https://github.com/pretzelhammer/rust-blog/blob/master/posts/chat-server.md
