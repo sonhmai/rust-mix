@@ -3,5 +3,6 @@ members = [
     "basic",
     "chat",
     "concurrency",
-    "performance"
+    "performance",
+    "bloom"
 ]
